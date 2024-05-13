@@ -1252,6 +1252,10 @@ func (conn *Connection) readMsg(msgCode uint8) error {
 
 			return err
 		}
+	case 3: // Ok. No data
+		return nil
+	case 0: // Ok. No data
+		return nil
 	default:
 		return errors.New(fmt.Sprintf("TTC error: received code %d during response reading", msgCode))
 	}
