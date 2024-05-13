@@ -1,3 +1,3 @@
-module github.com/sijms/go-ora
+module github.com/stle04/go-ora
 
-go 1.14
+go 1.21
