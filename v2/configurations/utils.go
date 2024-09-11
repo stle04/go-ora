@@ -3,6 +3,7 @@ package configurations
 import (
 	"fmt"
 	"strings"
+	"time"
 )
 
 func uniqueAppendString(list []string, newItem string, ignoreCase bool) ([]string, bool) {
@@ -281,4 +282,8 @@ func getCharsetID(charset string) (int, error) {
 		return 0, fmt.Errorf("charset %s is not supported by the driver", charset)
 	}
 	return id, nil
+}
+
+func getTimezone(name string) (loc *time.Location, err error) {
+	return time.LoadLocation(name)
 }

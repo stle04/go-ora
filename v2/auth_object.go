@@ -282,7 +282,11 @@ func (obj *AuthObject) Write(connOption *configurations.ConnectionConfig, mode L
 	index++
 	appendKeyVal("SESSION_CLIENT_LOBATTR", "1", 0)
 	index++
-	_, offset := time.Now().Zone()
+	loc := connOption.Timezone
+	if loc == nil {
+		loc = time.Local
+	}
+	_, offset := time.Now().In(loc).Zone()
 	tz := ""
 	if offset == 0 {
 		tz = "00:00"

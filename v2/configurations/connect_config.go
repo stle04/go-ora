@@ -316,6 +316,13 @@ func ParseConfig(dsn string) (*ConnectionConfig, error) {
 			}
 		case "PROGRAM":
 			config.ClientInfo.ProgramName = val[0]
+		case "TIMEZONE":
+			fallthrough
+		case "timezone":
+			config.Timezone, err = getTimezone(val[0])
+			if err != nil {
+				return nil, err
+			}
 		default:
 			return nil, fmt.Errorf("unknown URL option: %s", key)
 			//else if tempVal == "IMPLICIT" || tempVal == "AUTO" {

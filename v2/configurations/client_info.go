@@ -3,6 +3,7 @@ package configurations
 import (
 	"os"
 	"os/user"
+	"time"
 )
 
 type ClientInfo struct {
@@ -19,6 +20,7 @@ type ClientInfo struct {
 	Territory   string
 	CharsetID   int
 	Cid         string
+	Timezone    *time.Location
 }
 
 func getCurrentUser() *user.User {
